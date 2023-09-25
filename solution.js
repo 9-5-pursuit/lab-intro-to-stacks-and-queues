@@ -93,14 +93,13 @@ class Queue {
     if (this.size === 0) {
       this.last = null;
     }
-
     return first.data;
   }
   enqueue(data) {
     const newNode = new Node(data);
-    if (!this.first) {
+    if (!this.first && newNode.data) {
       this.first = newNode;
-      this.last = newNode;
+      this.last = this.first;
     } else {
       this.last.next = newNode;
       this.last = newNode;
