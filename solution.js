@@ -78,19 +78,50 @@ class Queue {
     this.max = 0;
   }
 
-  count() {}
+  count() {
+    return this.size;
+  }
   dequeue() {
+    if (!this.first) {
+      return null; 
+    }
+
+    const first = this.first;
+    this.first = this.first.next;
+    this.size--;
+
+    if (this.size === 0) {
+      this.last = null; 
+    }
+
+    return first.data;
   }
   enqueue(data) {
-    this.first = new Node(data);
-    this.last = this.first;
+    const newNode = new Node(data);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
     this.size++;
-    if (this.last.data > this.max) this.max = this.last.data;
+    if (data > this.max) {
+      this.max = data;
+    }
   }
-  findMax() {}
-  getLast() {}
-  isEmpty() {}
-  peek() {}
+  findMax() {
+    return this.max;
+  }
+  getLast() {
+    return this.last;
+  }
+  isEmpty() {
+    return this.size == 0;
+  }
+  peek() {
+    return this.first;
+  }
 }
 
 module.exports = {
