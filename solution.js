@@ -83,7 +83,7 @@ class Queue {
   }
   dequeue() {
     if (!this.first) {
-      return null; 
+      return null;
     }
 
     const first = this.first;
@@ -91,7 +91,7 @@ class Queue {
     this.size--;
 
     if (this.size === 0) {
-      this.last = null; 
+      this.last = null;
     }
 
     return first.data;
