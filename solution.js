@@ -137,19 +137,33 @@ class Queue {
   }
 
   isEmpty() {
+    return this.first === null ? true : false;
+  }
+
+  peek() {
+  return this.first === null ? null : this.first;
+  }
+
+  getLast() {
+    return this.first === null ? null : this.last;
+  }
+
+  findMax() {
     if (this.first === null) {
-      return true;
+      throw new Error("The queue is empty.");
     }
-    return false;
+    
+    let current = this.first
+    let maxValue = this.first.data
+    while (current) {
+      if (current.data > maxValue) {
+        maxValue = current.data
+      }
+      current = current.next;
+    }
+    return maxValue;
   }
 }
-
-let wordStack = new Queue()
-for (let i = 0; i < words.length; i++) {
-  wordStack.enqueue(words[i]);
-}
-
-console.log(wordStack.count())
 
 
 module.exports = {
