@@ -112,12 +112,44 @@ class Queue {
     }
     return this.size++;
   }
+
+  dequeue() {
+    if (this.first === null) {
+      throw new Error("The queue is empty.")
+    }
+
+    const itemToRemove = this.first
+    if (this.first === this.last) {
+      this.last = null
+    }
+
+    this.first = this.first.next
+    this.size--
+
+    return itemToRemove.data
+  }
+
+  count() {
+    if (this.first === null) {
+      throw new Error("The queue is empty.");
+    }
+    return this.size;
+  }
+
+  isEmpty() {
+    if (this.first === null) {
+      return true;
+    }
+    return false;
+  }
 }
 
-let wordStack = new Stack()
+let wordStack = new Queue()
 for (let i = 0; i < words.length; i++) {
-  wordStack.push(words[i]);
+  wordStack.enqueue(words[i]);
 }
+
+console.log(wordStack.count())
 
 
 module.exports = {
