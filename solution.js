@@ -102,8 +102,98 @@ class Stack {
 }
 
 class Queue {
-  
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+    this.max = null;
+  }
+
+  count() {
+    return this.size
+  }
+
+  enqueue(data) {
+    let newItem = new Node(data)
+
+    if (!this.first) {
+      this.first = newItem;
+      this.last = newItem;
+      this.max = data
+    } else {
+      this.last.next = newItem;
+      this.last = newItem;
+    }
+
+    if (data > this.max) {
+      this.max = data
+    }
+
+    return this.size++;
+  }
+
+  dequeue() {
+    if (this.first === null) {
+      throw new Error("The queue is empty");
+    }
+
+    const itemToRemove = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+
+    const item = this.first
+
+    this.first = this.first.next
+    this.size--;
+
+
+    let currentNode = this.first
+
+    while(currentNode) {
+      if (currentNode.data > this.max) {
+        this.max = currentNode.data
+      }
+
+      currentNode = currentNode.next
+    }
+  }
+
+  findMax() {
+    return this.max
+  }
+
+  getLast() {
+    return this.last
+  }
+
+  isEmpty() {
+    return this.first === null;
+  }
+
+  peek() {
+    if (this.first === null) {
+      throw new Error("The queue is empty");
+    }
+    return this.first;
+  }
 }
+
+let newQueue = new Queue()
+
+newQueue.enqueue(1)
+newQueue.enqueue(2)
+newQueue.enqueue(3)
+
+
+console.log(newQueue.peek())
+
+newQueue.dequeue()
+
+console.log(newQueue.findMax())
+
+console.log(newQueue.peek())
+
 
 module.exports = {
   Node,
