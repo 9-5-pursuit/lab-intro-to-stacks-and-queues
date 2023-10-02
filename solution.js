@@ -72,7 +72,71 @@ class Stack {
 }
 
 class Queue {
-
+  constructor() {
+    this.first = null
+    this.last = null
+    this.size = 0
+    this.max = 0
+  }
+  getLast() {
+    let node = this.first 
+    while (node.next){
+      node = node.next
+    }
+    return node
+  }
+  findMax(){
+    let node = this.first 
+    while (node) {
+      if (this.max < node.data) {
+        this.max = node.data
+      }
+      node = node.next
+    }
+    return this.max
+  }
+  count() {
+    let counter = 0
+    let node = this.first
+    while(node) {
+      counter++
+      node = node.next
+    }
+    return counter
+  }
+  enqueue(data) {
+    let newItem = new Node(data)
+    if(!this.first) {
+      this.first = newItem
+      this.last = newItem
+    } else {
+      this.last.next = newItem
+      this.last = newItem 
+    }
+    return ++this.size;
+  }
+  dequeue(){
+    if (this.first == null){
+      throw new Error("The queue is empty")
+    }
+    const item = this.first
+    if (this.first === this.last){
+      this.last === null
+    }
+    this.first = this.first.next
+    this.size--
+    return item.data
+  }
+  peek() {
+    if (this.first == null){
+      throw new Error("The queue is empty")
+    }
+    return this.first
+  }
+  isEmpty() {
+    return this.first === null
+  }
+  
 }
 
 
