@@ -9,14 +9,16 @@ class Node {
 }
 
 class Stack {
-  constructor(top = null) {
+  constructor(top = null, length = 0 ) {
       this.top = top;
+      this.length = length
   }
     
   push(data) {
     const newNode = new Node(data);
     newNode.next = this.top
     this.top = newNode;
+    this.length++
   }
   size() {
     let count = 0;
@@ -33,6 +35,7 @@ class Stack {
     }
     let currentTop = this.top;
     this.top = currentTop.next;
+    this.length--
 
     return currentTop
   }
@@ -57,8 +60,17 @@ class Stack {
   peek() {
     return this.top
   }
-  sort() {
-  
+  sort(){
+    const arr = []
+    const size = this.length
+    for(let i = 0; i < size; i++){
+      arr.push(this.pop().data) 
+    }
+    arr.sort().reverse()
+    for(let i = 0; i < size; i++){
+      this.push(arr[i])
+    }
+   return arr.top
   }
 }
   
