@@ -63,6 +63,13 @@ class Stack {
   let numsStack = new Stack();
   let wordsStack = new Stack();
 
+  for(let i=0; i<nums.length; i++) {
+    numsStack.push(nums[i])
+  }
+  for(let i=0; i<words.length; i++) {
+    wordsStack.push(words[i])
+  }
+
 
 
   class Queue {
