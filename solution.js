@@ -36,6 +36,9 @@ class Stack {
 
     return currentTop
   }
+  isEmpty() {
+    return this.top === null;
+  }
 }
   
 
