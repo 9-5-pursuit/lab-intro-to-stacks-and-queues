@@ -54,6 +54,9 @@ class Stack {
     }
     return min
   }
+  peek() {
+    return this.top
+  }
   sort() {
     
   }
@@ -72,12 +75,26 @@ class Stack {
 
 
 
-  class Queue {
-    constructor() {
+class Queue {
+  constructor() {
       this.first = null;
       this.last = null;
       this.size = 0
+      this.maxValue = null
+  }
+  enqueue(data) {
+    let newNode = new Node(data);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+      this.maxValue = data;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+      this.maxValue = Math.max(this.maxValue, data);
     }
+    return this.size++;
+  }
 
 
   }
