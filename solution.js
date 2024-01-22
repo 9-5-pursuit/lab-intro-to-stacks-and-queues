@@ -105,11 +105,18 @@ class Queue {
     }
     this.first = currentFirst.next;
     this.size--;
-    return currentFirst;
+    return currentFirst.data;
   }
   count() {
     return this.size;
   }
+  isEmpty() {
+    return this.size === 0;
+  }
+  peek() {
+    return this.first;
+  }
+
 
 
 
