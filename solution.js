@@ -7,29 +7,37 @@ class Node {
     this.next = next;
   }
 }
-  class Stack {
-    constructor(top = null) {
+
+class Stack {
+  constructor(top = null) {
       this.top = top;
-    }
-    
-    push(data) {
-      const newNode = new Node(data);
-      newNode.next = this.top
-      this.top = newNode;
-    }
-    size() {
-      let count = 0;
-      let current = this.top;
-      while (current !== null) {
-        count++;
-        current = current.next;
-      }
-      return count;
-    }
-    pop() {
-      
-    }
   }
+    
+  push(data) {
+    const newNode = new Node(data);
+    newNode.next = this.top
+    this.top = newNode;
+  }
+  size() {
+    let count = 0;
+    let current = this.top;
+    while (current !== null) {
+      count++;
+      current = current.next;
+    }
+    return count;
+  }
+  pop() {
+    if (this.top === null) {
+      return "Stack is empty";
+    }
+    let currentTop = this.top;
+    this.top = currentTop.next;
+
+    return currentTop
+  }
+}
+  
 
   let numsStack = new Stack();
   let wordsStack = new Stack();
