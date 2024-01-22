@@ -11,17 +11,26 @@ class Node {
     constructor(top = null) {
       this.top = top;
     }
-
+    
+    push(data) {
+      const newNode = new Node(data);
+      newNode.next = this.top
+      this.top = newNode;
+    }
   }
+
+  let numsStack = new Stack();
+  let wordsStack = new Stack();
+
 
 
   class Queue {
-    consturctor() {
+    constructor() {
       this.first = null;
       this.last = null;
       this.size = 0
     }
-    
+
 
   }
 
