@@ -17,6 +17,18 @@ class Node {
       newNode.next = this.top
       this.top = newNode;
     }
+    size() {
+      let count = 0;
+      let current = this.top;
+      while (current !== null) {
+        count++;
+        current = current.next;
+      }
+      return count;
+    }
+    pop() {
+      
+    }
   }
 
   let numsStack = new Stack();
