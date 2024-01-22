@@ -116,6 +116,13 @@ class Queue {
   peek() {
     return this.first;
   }
+  getLast() {
+    return this.last;
+  }
+
+  findMax() {
+    return this.maxValue;
+  }
 
 
 
